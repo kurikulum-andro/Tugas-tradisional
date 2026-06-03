@@ -42,7 +42,6 @@
             pointer-events: none;
         }
 
-        /* Animated particles */
         .particle {
             position: absolute;
             background: linear-gradient(135deg, #ffb347, #ff6b3d);
@@ -189,7 +188,6 @@
             font-weight: 600;
         }
 
-        /* Kontrol dengan checkbox */
         .controls {
             background: white;
             border-radius: 1.2rem;
@@ -375,7 +373,7 @@
     </div>
 
     <div class="table-wrapper">
-        <table>
+        <table id="musicTable">
             <thead>
                 <tr><th>No</th><th>Nama Alat Musik</th><th>Asal Daerah</th><th>Kategori</th><th>Sumber Bunyi</th><th>Cara Memainkan</th></tr>
             </thead>
@@ -385,14 +383,14 @@
     <footer><i class="fas fa-music"></i> Terinspirasi dari kekayaan budaya Indonesia | Untuk pacarku tersayang</footer>
 </div>
 
-<!-- Music Player (musik cinta) -->
+<!-- Music Player -->
 <div id="musicPlayer" class="music-player">
     <i class="fas fa-music" id="musicIcon"></i>
-    <span id="musicText">🎵 Love Song</span>
+    <span id="musicText">🎵 Musik Cinta</span>
 </div>
 
 <script>
-    // ============= DATA 150 ALAT MUSIK TRADISIONAL (LENGKAP) =============
+    // ============= DATA 150 ALAT MUSIK TRADISIONAL =============
     const alatMusik = [
         { no:1, nama:"Angklung", asal:"Jawa Barat", kategori:"harmonis", sumber:"Idiofon", cara:"Digoyang" },
         { no:2, nama:"Calung", asal:"Jawa Barat", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
@@ -546,7 +544,6 @@
         { no:150, nama:"Pikon", asal:"Papua", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" }
     ];
 
-    // State
     let activeFilters = { ritmis: true, melodis: true, harmonis: true };
     let searchTerm = "";
 
@@ -554,13 +551,12 @@
         const tbody = document.getElementById("tableBody");
         const filtered = alatMusik.filter(item => {
             const matchFilter = activeFilters[item.kategori];
-            const matchSearch = item.nama.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                              item.asal.toLowerCase().includes(searchTerm.toLowerCase());
+            const matchSearch = item.nama.toLowerCase().includes(searchTerm.toLowerCase()) || item.asal.toLowerCase().includes(searchTerm.toLowerCase());
             return matchFilter && matchSearch;
         });
 
         if (filtered.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:2rem;">🔍 Tidak ada data yang ditemukan</td></tr>`;
+            tbody.innerHTML = `<td><td colspan="6" style="text-align:center; padding:2rem;">🔍 Tidak ada data yang ditemukan</td></tr>`;
             return;
         }
 
@@ -568,35 +564,26 @@
         filtered.forEach(item => {
             let kategoriText = item.kategori === "ritmis" ? "Ritmis" : (item.kategori === "melodis" ? "Melodis" : "Harmonis");
             let kelasKategori = item.kategori === "ritmis" ? "badge-ritmis" : (item.kategori === "melodis" ? "badge-melodis" : "badge-harmonis");
-            html += `
-                <tr>
-                    <td>${item.no}</td>
-                    <td><strong>${item.nama}</strong></td>
-                    <td>${item.asal}</td>
-                    <td><span class="kategori-badge ${kelasKategori}">${kategoriText}</span></td>
-                    <td>${item.sumber}</td>
-                    <td>${item.cara}</td>
-                </tr>
-            `;
+            html += `<tr>
+                        <td>${item.no}</td>
+                        <td><strong>${item.nama}</strong></td>
+                        <td>${item.asal}</td>
+                        <td><span class="kategori-badge ${kelasKategori}">${kategoriText}</span></td>
+                        <td>${item.sumber}</td>
+                        <td>${item.cara}</td>
+                     </tr>`;
         });
         tbody.innerHTML = html;
     }
 
-    // Event listeners untuk checkbox
     document.querySelectorAll('#filterCheckboxes input').forEach(checkbox => {
         checkbox.addEventListener('change', (e) => {
             activeFilters[e.target.value] = e.target.checked;
             renderTable();
-            
-            // Update style label
             const label = e.target.closest('label');
-            if (e.target.checked) {
-                label.classList.add('active');
-            } else {
-                label.classList.remove('active');
-            }
+            if (e.target.checked) label.classList.add('active');
+            else label.classList.remove('active');
         });
-        // Set initial checked dan aktif
         checkbox.checked = true;
         checkbox.closest('label').classList.add('active');
     });
@@ -606,84 +593,68 @@
         renderTable();
     });
 
-    // ============= MUSIK CINTA =============
+    // ============= MUSIK OTOMATIS NYALA =============
+    let audioElement = null;
     let isMusicPlaying = false;
-    let audioContext = null;
-    let currentOsc = null;
-    let musicInterval = null;
 
-    function playLoveMusic() {
-        if (audioContext) {
-            audioContext.close();
-            if (musicInterval) clearInterval(musicInterval);
+    function startMusic() {
+        if (audioElement && isMusicPlaying) return;
+        if (!audioElement) {
+            audioElement = new Audio();
+            audioElement.src = "https://kurikulum-andro.github.io/Tugas-tradisional/SnapTik.Net_7549397544703462663.mp3";
+            audioElement.loop = true;
+            audioElement.volume = 0.35;
         }
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        
-        function playChord() {
-            const now = audioContext.currentTime;
-            const osc1 = audioContext.createOscillator();
-            const osc2 = audioContext.createOscillator();
-            const gain = audioContext.createGain();
-            osc1.connect(gain);
-            osc2.connect(gain);
-            gain.connect(audioContext.destination);
-            gain.gain.value = 0.15;
-            osc1.frequency.value = 261.63; // C4
-            osc2.frequency.value = 329.63; // E4
-            osc1.start();
-            osc2.start();
-            gain.gain.exponentialRampToValueAtTime(0.00001, now + 1.5);
-            osc1.stop(now + 1.5);
-            osc2.stop(now + 1.5);
-        }
-        
-        playChord();
-        musicInterval = setInterval(() => {
-            if (audioContext && audioContext.state === 'running') {
-                playChord();
-            }
-        }, 3000);
+        audioElement.play().then(() => {
+            isMusicPlaying = true;
+            document.getElementById('musicIcon').className = 'fas fa-music';
+            document.getElementById('musicText').innerHTML = '🎵 Musik Diputar';
+        }).catch(err => {
+            console.log("Autoplay diblokir browser:", err);
+            document.getElementById('musicText').innerHTML = '⚠️ Klik untuk putar musik';
+        });
     }
 
-    let isMusicEnabled = true;
     const musicPlayer = document.getElementById('musicPlayer');
-    const musicIcon = document.getElementById('musicIcon');
-    const musicText = document.getElementById('musicText');
-
     musicPlayer.addEventListener('click', () => {
-        if (isMusicEnabled) {
-            if (audioContext) {
-                audioContext.close();
-                if (musicInterval) clearInterval(musicInterval);
-            }
-            isMusicEnabled = false;
-            musicIcon.className = 'fas fa-music-slash';
-            musicText.innerText = '🔇 Musik Off';
+        if (isMusicPlaying) {
+            audioElement.pause();
+            isMusicPlaying = false;
+            document.getElementById('musicIcon').className = 'fas fa-music-slash';
+            document.getElementById('musicText').innerHTML = '🔇 Musik Dihentikan';
         } else {
-            playLoveMusic();
-            isMusicEnabled = true;
-            musicIcon.className = 'fas fa-music';
-            musicText.innerText = '🎵 Love Song';
+            audioElement.play();
+            isMusicPlaying = true;
+            document.getElementById('musicIcon').className = 'fas fa-music';
+            document.getElementById('musicText').innerHTML = '🎵 Musik Diputar';
         }
     });
 
-    // Mulai musik saat enter ke halaman utama
     document.getElementById("enterBtn").addEventListener("click", () => {
         const welcome = document.getElementById("welcomePage");
         welcome.classList.add("hide");
         setTimeout(() => {
             welcome.style.display = "none";
             document.getElementById("mainContent").classList.add("show");
+            startMusic(); // Musik mulai otomatis saat halaman utama muncul
         }, 600);
         renderTable();
-        playLoveMusic();
-        isMusicEnabled = true;
     });
 
-    // Floating hearts & particles
+    // Fallback: jika pengguna langsung akses halaman utama (tidak melalui tombol)
+    window.addEventListener('load', () => {
+        // Jika halaman welcome masih terlihat, tunggu tombol
+        const welcome = document.getElementById("welcomePage");
+        if (welcome.style.display !== 'none' && !welcome.classList.contains('hide')) {
+            // tombol akan memulai musik, tidak perlu action
+        } else {
+            // Jika welcome sudah hilang (misal karena cache), coba mulai musik
+            setTimeout(startMusic, 500);
+        }
+    });
+
     function createParticlesAndHearts() {
         const container = document.getElementById("welcomePage");
-        // Particles
         for (let i = 0; i < 60; i++) {
             const particle = document.createElement("div");
             particle.className = "particle";
@@ -695,7 +666,6 @@
             particle.style.animationDelay = Math.random() * 5 + "s";
             container.appendChild(particle);
         }
-        // Hearts
         for (let i = 0; i < 40; i++) {
             const heart = document.createElement("div");
             heart.className = "floating-heart";
@@ -710,4 +680,4 @@
     createParticlesAndHearts();
 </script>
 </body>
-  </html>
+</html>
