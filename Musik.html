@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Warisan Budaya | 150 Alat Musik Tradisional Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #f0f4fa 0%, #e8edf5 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ========= HALAMAN SAMBUTAN MODERN ========= */
+        .welcome-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 20%, #0a1a2e, #030c17);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .welcome-page.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* Animated particles */
+        .particle {
+            position: absolute;
+            background: linear-gradient(135deg, #ffb347, #ff6b3d);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: floatParticle 12s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            20% { opacity: 0.5; }
+            80% { opacity: 0.3; }
+            100% { transform: translateY(-20vh) scale(1); opacity: 0; }
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 120, 160, 0.5);
+            font-size: 1.2rem;
+            animation: floatHeart 10s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes floatHeart {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.7; }
+            80% { opacity: 0.4; }
+            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+        }
+
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 2.5rem;
+            padding: 3rem 2rem;
+            max-width: 550px;
+            width: 90%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.3);
+            animation: fadeInScale 0.8s ease;
+            z-index: 20;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .welcome-card h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffd89b, #ffb76e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .welcome-card .subtitle {
+            color: #ffd966;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .love-icon {
+            font-size: 3.5rem;
+            color: #ff6b8a;
+            margin: 1rem 0;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 0 rgba(255,107,138,0); }
+            50% { transform: scale(1.1); text-shadow: 0 0 15px rgba(255,107,138,0.5); }
+        }
+
+        .btn-enter {
+            background: linear-gradient(135deg, #ff7e5e, #ff6b4a);
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 3rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 20px -5px rgba(255,107,74,0.4);
+        }
+
+        .btn-enter:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.05);
+            box-shadow: 0 15px 30px -5px rgba(255,107,74,0.6);
+        }
+
+        /* ========= HALAMAN UTAMA ========= */
+        .main-content {
+            display: none;
+            padding: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .main-content.show {
+            display: block;
+            animation: fadeInContent 0.6s ease;
+        }
+
+        @keyframes fadeInContent {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-header {
+            background: linear-gradient(135deg, #1e3c4c, #0f2c3a);
+            border-radius: 1.5rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+        }
+
+        .hero-header h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .badge-count {
+            background: rgba(255,255,255,0.15);
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+        }
+
+        /* Kontrol dengan checkbox */
+        .controls {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .search-box {
+            flex: 2;
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .filter-checkboxes {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-checkboxes label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            background: #eef2f8;
+            transition: 0.2s;
+        }
+
+        .filter-checkboxes label.active {
+            background: #1e5a6e;
+            color: white;
+        }
+
+        .filter-checkboxes input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #1e5a6e;
+        }
+
+        .table-wrapper {
+            background: white;
+            border-radius: 1.2rem;
+            overflow-x: auto;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        th {
+            background: #1e5a6e;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 0.8rem;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        .kategori-badge {
+            display: inline-block;
+            padding: 0.2rem 0.7rem;
+            border-radius: 2rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .badge-ritmis { background: #ffebee; color: #c62828; }
+        .badge-melodis { background: #fff3e0; color: #ef6c00; }
+        .badge-harmonis { background: #e8f5e9; color: #2e7d32; }
+
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(12px);
+            padding: 8px 15px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid rgba(255,107,74,0.5);
+        }
+
+        .music-player:hover {
+            background: rgba(0,0,0,0.85);
+            transform: scale(1.02);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #6c8ea0;
+            margin-top: 2rem;
+            padding: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            th, td { padding: 0.5rem; font-size: 0.7rem; }
+            .controls { flex-direction: column; align-items: stretch; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HALAMAN SAMBUTAN -->
+<div id="welcomePage" class="welcome-page">
+    <div class="welcome-card">
+        <div class="love-icon"><i class="fas fa-heart"></i></div>
+        <h1>Selamat Datang,</h1>
+        <div class="subtitle">🌸 Untuk Pacarku Tercinta 🌸</div>
+        <p style="color:#ccc; margin:0.5rem 0;">Ini adalah tugas istimewa untukmu,</p>
+        <p style="font-size:1.2rem; font-weight:600; color:#ffb76e;">150 Alat Musik Tradisional Indonesia</p>
+        <p style="color:#aaa; margin-top:0.5rem;">yang kuhimpun dengan penuh cinta 💖</p>
+        <button class="btn-enter" id="enterBtn">
+            <i class="fas fa-arrow-right"></i> Lihat Tugas
+        </button>
+    </div>
+</div>
+
+<!-- HALAMAN UTAMA -->
+<div id="mainContent" class="main-content">
+    <div class="hero-header">
+        <div>
+            <h1><i class="fas fa-drumstick-bite"></i> 150 Alat Musik Tradisional Indonesia</h1>
+            <p>Warisan budaya Nusantara • Lengkap dengan kategori R, M, H</p>
+        </div>
+        <div class="badge-count"><i class="fas fa-list"></i> Total: 150 Alat Musik</div>
+    </div>
+
+    <div class="controls">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Cari nama alat musik atau daerah...">
+        </div>
+        <div class="filter-checkboxes" id="filterCheckboxes">
+            <label><input type="checkbox" value="ritmis"> 🥁 Ritmis (R)</label>
+            <label><input type="checkbox" value="melodis"> 🎵 Melodis (M)</label>
+            <label><input type="checkbox" value="harmonis"> 🎶 Harmonis (H)</label>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr><th>No</th><th>Nama Alat Musik</th><th>Asal Daerah</th><th>Kategori</th><th>Sumber Bunyi</th><th>Cara Memainkan</th></tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+    <footer><i class="fas fa-music"></i> Terinspirasi dari kekayaan budaya Indonesia | Untuk pacarku tersayang</footer>
+</div>
+
+<!-- Music Player (musik cinta) -->
+<div id="musicPlayer" class="music-player">
+    <i class="fas fa-music" id="musicIcon"></i>
+    <span id="musicText">🎵 Love Song</span>
+</div>
+
+<script>
+    // ============= DATA 150 ALAT MUSIK TRADISIONAL (LENGKAP) =============
+    const alatMusik = [
+        { no:1, nama:"Angklung", asal:"Jawa Barat", kategori:"harmonis", sumber:"Idiofon", cara:"Digoyang" },
+        { no:2, nama:"Calung", asal:"Jawa Barat", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:3, nama:"Arumba", asal:"Jawa Barat", kategori:"harmonis", sumber:"Idiofon", cara:"Digoyang" },
+        { no:4, nama:"Kecapi", asal:"Jawa Barat", kategori:"melodis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:5, nama:"Suling", asal:"Jawa Barat", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:6, nama:"Rebab", asal:"Jawa Barat", kategori:"melodis", sumber:"Kordofon", cara:"Digesek" },
+        { no:7, nama:"Tarawangsa", asal:"Jawa Barat", kategori:"melodis", sumber:"Kordofon", cara:"Digesek" },
+        { no:8, nama:"Gendang", asal:"Aceh", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:9, nama:"Rapai", asal:"Aceh", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:10, nama:"Serune Kalee", asal:"Aceh", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:11, nama:"Bangsi", asal:"Aceh", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:12, nama:"Gambus", asal:"Aceh/Riau", kategori:"harmonis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:13, nama:"Canang", asal:"Aceh", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:14, nama:"Gordang Sambilan", asal:"Sumatera Utara", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:15, nama:"Gondang", asal:"Sumatera Utara", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:16, nama:"Hasapi", asal:"Sumatera Utara", kategori:"melodis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:17, nama:"Saxophone Batak", asal:"Sumatera Utara", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:18, nama:"Sarune Bolon", asal:"Sumatera Utara", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:19, nama:"Sulim", asal:"Sumatera Utara", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:20, nama:"Taganing", asal:"Sumatera Utara", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:21, nama:"Garantung", asal:"Sumatera Utara", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:22, nama:"Hapetan", asal:"Sumatera Utara", kategori:"melodis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:23, nama:"Salung", asal:"Sumatera Barat", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:24, nama:"Talempong", asal:"Sumatera Barat", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:25, nama:"Saluang", asal:"Sumatera Barat", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:26, nama:"Bansi", asal:"Sumatera Barat", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:27, nama:"Rabab", asal:"Sumatera Barat", kategori:"melodis", sumber:"Kordofon", cara:"Digesek" },
+        { no:28, nama:"Pupuik Batang Padi", asal:"Sumatera Barat", kategori:"ritmis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:29, nama:"Pupuik Tanduak", asal:"Sumatera Barat", kategori:"ritmis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:30, nama:"Serunai", asal:"Sumatera Barat", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:31, nama:"Gandang Tabuik", asal:"Sumatera Barat", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:32, nama:"Gendang Melayu", asal:"Riau", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:33, nama:"Nafiri", asal:"Riau", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:34, nama:"Kompang", asal:"Riau/Kepri", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:35, nama:"Marwas", asal:"Riau", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:36, nama:"Akordion", asal:"Riau/Melayu", kategori:"harmonis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:37, nama:"Gendang Panjang", asal:"Kepulauan Riau", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:38, nama:"Gambus Selodang", asal:"Jambi", kategori:"harmonis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:39, nama:"Sekdu", asal:"Jambi", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:40, nama:"Kelongkong", asal:"Jambi", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:41, nama:"Kulintang", asal:"Sumatera Selatan", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:42, nama:"Tenun", asal:"Sumatera Selatan", kategori:"melodis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:43, nama:"Genggong", asal:"Sumatera Selatan", kategori:"melodis", sumber:"Idiofon", cara:"Dipetik" },
+        { no:44, nama:"Burda", asal:"Sumatera Selatan", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:45, nama:"Accordion Melayu", asal:"Sumatera Selatan", kategori:"harmonis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:46, nama:"Dambus", asal:"Bangka Belitung", kategori:"harmonis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:47, nama:"Rebana", asal:"Bangka Belitung", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:48, nama:"Gambangan", asal:"Bengkulu", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:49, nama:"Redap", asal:"Bengkulu", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:50, nama:"Doll", asal:"Bengkulu", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:51, nama:"Cetik", asal:"Lampung", kategori:"melodis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:52, nama:"Gambus Lunik", asal:"Lampung", kategori:"harmonis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:53, nama:"Ketubung", asal:"Lampung", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:54, nama:"Gamelan", asal:"Jawa Tengah/DIY/Jatim", kategori:"harmonis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:55, nama:"Saron", asal:"Jawa Tengah/DIY/Jatim", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:56, nama:"Bonang", asal:"Jawa Tengah/DIY/Jatim", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:57, nama:"Kendang", asal:"Jawa Tengah/DIY/Jatim", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:58, nama:"Gong", asal:"Jawa Tengah/DIY/Jatim", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:59, nama:"Kenong", asal:"Jawa Tengah/DIY/Jatim", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:60, nama:"Kempul", asal:"Jawa Tengah/DIY/Jatim", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:61, nama:"Slenthem", asal:"Jawa Tengah/DIY/Jatim", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:62, nama:"Demung", asal:"Jawa Tengah/DIY/Jatim", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:63, nama:"Gender", asal:"Jawa Tengah/DIY/Jatim", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:64, nama:"Gambang", asal:"Jawa Tengah/DIY/Jatim", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:65, nama:"Siter", asal:"Jawa Tengah/DIY/Jatim", kategori:"melodis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:66, nama:"Celempung", asal:"Jawa Tengah/DIY/Jatim", kategori:"melodis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:67, nama:"Suling", asal:"Jawa Tengah/DIY/Jatim", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:68, nama:"Bedug", asal:"Jawa Tengah/DIY/Jatim", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:69, nama:"Terbang", asal:"Jawa Tengah/DIY/Jatim", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:70, nama:"Bendhe", asal:"Jawa Tengah", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:71, nama:"Ketuk", asal:"Jawa Tengah/DIY/Jatim", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:72, nama:"Kemanak", asal:"Jawa Tengah/DIY", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:73, nama:"Kethuk", asal:"Jawa Tengah/DIY/Jatim", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:74, nama:"Kecer", asal:"Jawa Tengah/DIY/Jatim", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:75, nama:"Trompet Reog", asal:"Jawa Timur", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:76, nama:"Angklung Reog", asal:"Jawa Timur", kategori:"harmonis", sumber:"Idiofon", cara:"Digoyang" },
+        { no:77, nama:"Terompet", asal:"Jawa Timur", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:78, nama:"Ketipung", asal:"Jawa Timur", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:79, nama:"Jidor", asal:"Jawa Timur", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:80, nama:"Saronen", asal:"Madura/Jatim", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:81, nama:"Tongtong", asal:"Madura/Jatim", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:82, nama:"Dogdog", asal:"Banten", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:83, nama:"Rampak Bedug", asal:"Banten", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:84, nama:"Toleat", asal:"Banten", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:85, nama:"Karinding", asal:"Jawa Barat", kategori:"melodis", sumber:"Idiofon", cara:"Dipetik" },
+        { no:86, nama:"Jentreng", asal:"Jawa Barat", kategori:"melodis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:87, nama:"Celempung", asal:"Jawa Barat", kategori:"melodis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:88, nama:"Bangsing", asal:"Jawa Barat", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:89, nama:"Gamelan Bali", asal:"Bali", kategori:"harmonis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:90, nama:"Rindik", asal:"Bali", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:91, nama:"Ceng-ceng", asal:"Bali", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:92, nama:"Jegog", asal:"Bali", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:93, nama:"Gong Kebyar", asal:"Bali", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:94, nama:"Gender Wayang", asal:"Bali", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:95, nama:"Gangsa", asal:"Bali", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:96, nama:"Suling Gambuh", asal:"Bali", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:97, nama:"Kendang Bali", asal:"Bali", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:98, nama:"Reong", asal:"Bali", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:99, nama:"Kajar", asal:"Bali", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:100, nama:"Trompong", asal:"Bali", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:101, nama:"Gong Gede", asal:"Bali", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:102, nama:"Genggong", asal:"Bali", kategori:"melodis", sumber:"Idiofon", cara:"Dipetik" },
+        { no:103, nama:"Sasando", asal:"Nusa Tenggara Timur", kategori:"harmonis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:104, nama:"Heo", asal:"NTT", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:105, nama:"Foy Doa", asal:"NTT", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:106, nama:"Foy Pay", asal:"NTT", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:107, nama:"Knobe Khabetas", asal:"NTT", kategori:"melodis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:108, nama:"Prere", asal:"NTT", kategori:"melodis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:109, nama:"Kediding", asal:"NTT", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:110, nama:"Gong Waning", asal:"NTT", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:111, nama:"Gong Beka", asal:"NTB", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:112, nama:"Satong Srek", asal:"NTB", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:113, nama:"Palompong", asal:"NTB", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:114, nama:"Serunai", asal:"NTB", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:115, nama:"Genggong", asal:"NTB", kategori:"melodis", sumber:"Idiofon", cara:"Dipetik" },
+        { no:116, nama:"Sape", asal:"Kalimantan Timur/Utara", kategori:"melodis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:117, nama:"Sampe", asal:"Kalimantan Timur/Utara", kategori:"melodis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:118, nama:"Jatung Utang", asal:"Kalimantan Tengah", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:119, nama:"Garantung", asal:"Kalimantan Tengah", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:120, nama:"Gandang", asal:"Kalimantan Selatan", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:121, nama:"Panting", asal:"Kalimantan Selatan", kategori:"harmonis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:122, nama:"Babun", asal:"Kalimantan Selatan", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:123, nama:"Sarunai Banjar", asal:"Kalimantan Selatan", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:124, nama:"Kuriding", asal:"Kalimantan Selatan", kategori:"melodis", sumber:"Idiofon", cara:"Dipetik" },
+        { no:125, nama:"Kalimpat", asal:"Kalimantan Barat", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:126, nama:"Agukng", asal:"Kalimantan Barat", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:127, nama:"Tuma", asal:"Kalimantan Barat", kategori:"melodis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:128, nama:"Silotong", asal:"Kalimantan Barat", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:129, nama:"Kolintang", asal:"Sulawesi Utara", kategori:"harmonis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:130, nama:"Bansi", asal:"Sulawesi Utara", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:131, nama:"Gongga", asal:"Sulawesi Tengah", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:132, nama:"Lalove", asal:"Sulawesi Tengah", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:133, nama:"Gesok-gesok", asal:"Sulawesi Tengah", kategori:"melodis", sumber:"Kordofon", cara:"Digesek" },
+        { no:134, nama:"Tutuba", asal:"Sulawesi Tengah", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:135, nama:"Yori", asal:"Sulawesi Tengah", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:136, nama:"Popondi", asal:"Sulawesi Tengah", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:137, nama:"Keso-keso", asal:"Sulawesi Selatan", kategori:"melodis", sumber:"Kordofon", cara:"Digesek" },
+        { no:138, nama:"Puik-puik", asal:"Sulawesi Selatan", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:139, nama:"Alosu", asal:"Sulawesi Selatan", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:140, nama:"Talindo", asal:"Sulawesi Tenggara", kategori:"melodis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:141, nama:"Lado-lado", asal:"Sulawesi Tenggara", kategori:"ritmis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:142, nama:"Ganda", asal:"Sulawesi Tenggara", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:143, nama:"Tifa", asal:"Maluku/Papua", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:144, nama:"Totobuang", asal:"Maluku", kategori:"melodis", sumber:"Idiofon", cara:"Dipukul" },
+        { no:145, nama:"Suling Melintang", asal:"Maluku", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" },
+        { no:146, nama:"Ukulele", asal:"Maluku", kategori:"harmonis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:147, nama:"Hawaiian", asal:"Maluku", kategori:"harmonis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:148, nama:"Arababu", asal:"Maluku", kategori:"ritmis", sumber:"Membranofon", cara:"Dipukul" },
+        { no:149, nama:"Jukulele", asal:"Maluku", kategori:"harmonis", sumber:"Kordofon", cara:"Dipetik" },
+        { no:150, nama:"Pikon", asal:"Papua", kategori:"melodis", sumber:"Aerofon", cara:"Ditiup" }
+    ];
+
+    // State
+    let activeFilters = { ritmis: true, melodis: true, harmonis: true };
+    let searchTerm = "";
+
+    function renderTable() {
+        const tbody = document.getElementById("tableBody");
+        const filtered = alatMusik.filter(item => {
+            const matchFilter = activeFilters[item.kategori];
+            const matchSearch = item.nama.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                              item.asal.toLowerCase().includes(searchTerm.toLowerCase());
+            return matchFilter && matchSearch;
+        });
+
+        if (filtered.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:2rem;">🔍 Tidak ada data yang ditemukan</td></tr>`;
+            return;
+        }
+
+        let html = "";
+        filtered.forEach(item => {
+            let kategoriText = item.kategori === "ritmis" ? "Ritmis" : (item.kategori === "melodis" ? "Melodis" : "Harmonis");
+            let kelasKategori = item.kategori === "ritmis" ? "badge-ritmis" : (item.kategori === "melodis" ? "badge-melodis" : "badge-harmonis");
+            html += `
+                <tr>
+                    <td>${item.no}</td>
+                    <td><strong>${item.nama}</strong></td>
+                    <td>${item.asal}</td>
+                    <td><span class="kategori-badge ${kelasKategori}">${kategoriText}</span></td>
+                    <td>${item.sumber}</td>
+                    <td>${item.cara}</td>
+                </tr>
+            `;
+        });
+        tbody.innerHTML = html;
+    }
+
+    // Event listeners untuk checkbox
+    document.querySelectorAll('#filterCheckboxes input').forEach(checkbox => {
+        checkbox.addEventListener('change', (e) => {
+            activeFilters[e.target.value] = e.target.checked;
+            renderTable();
+            
+            // Update style label
+            const label = e.target.closest('label');
+            if (e.target.checked) {
+                label.classList.add('active');
+            } else {
+                label.classList.remove('active');
+            }
+        });
+        // Set initial checked dan aktif
+        checkbox.checked = true;
+        checkbox.closest('label').classList.add('active');
+    });
+
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+        searchTerm = e.target.value;
+        renderTable();
+    });
+
+    // ============= MUSIK CINTA =============
+    let isMusicPlaying = false;
+    let audioContext = null;
+    let currentOsc = null;
+    let musicInterval = null;
+
+    function playLoveMusic() {
+        if (audioContext) {
+            audioContext.close();
+            if (musicInterval) clearInterval(musicInterval);
+        }
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        
+        function playChord() {
+            const now = audioContext.currentTime;
+            const osc1 = audioContext.createOscillator();
+            const osc2 = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            osc1.connect(gain);
+            osc2.connect(gain);
+            gain.connect(audioContext.destination);
+            gain.gain.value = 0.15;
+            osc1.frequency.value = 261.63; // C4
+            osc2.frequency.value = 329.63; // E4
+            osc1.start();
+            osc2.start();
+            gain.gain.exponentialRampToValueAtTime(0.00001, now + 1.5);
+            osc1.stop(now + 1.5);
+            osc2.stop(now + 1.5);
+        }
+        
+        playChord();
+        musicInterval = setInterval(() => {
+            if (audioContext && audioContext.state === 'running') {
+                playChord();
+            }
+        }, 3000);
+    }
+
+    let isMusicEnabled = true;
+    const musicPlayer = document.getElementById('musicPlayer');
+    const musicIcon = document.getElementById('musicIcon');
+    const musicText = document.getElementById('musicText');
+
+    musicPlayer.addEventListener('click', () => {
+        if (isMusicEnabled) {
+            if (audioContext) {
+                audioContext.close();
+                if (musicInterval) clearInterval(musicInterval);
+            }
+            isMusicEnabled = false;
+            musicIcon.className = 'fas fa-music-slash';
+            musicText.innerText = '🔇 Musik Off';
+        } else {
+            playLoveMusic();
+            isMusicEnabled = true;
+            musicIcon.className = 'fas fa-music';
+            musicText.innerText = '🎵 Love Song';
+        }
+    });
+
+    // Mulai musik saat enter ke halaman utama
+    document.getElementById("enterBtn").addEventListener("click", () => {
+        const welcome = document.getElementById("welcomePage");
+        welcome.classList.add("hide");
+        setTimeout(() => {
+            welcome.style.display = "none";
+            document.getElementById("mainContent").classList.add("show");
+        }, 600);
+        renderTable();
+        playLoveMusic();
+        isMusicEnabled = true;
+    });
+
+    // Floating hearts & particles
+    function createParticlesAndHearts() {
+        const container = document.getElementById("welcomePage");
+        // Particles
+        for (let i = 0; i < 60; i++) {
+            const particle = document.createElement("div");
+            particle.className = "particle";
+            const size = Math.random() * 15 + 3;
+            particle.style.width = size + "px";
+            particle.style.height = size + "px";
+            particle.style.left = Math.random() * 100 + "%";
+            particle.style.animationDuration = Math.random() * 12 + 6 + "s";
+            particle.style.animationDelay = Math.random() * 5 + "s";
+            container.appendChild(particle);
+        }
+        // Hearts
+        for (let i = 0; i < 40; i++) {
+            const heart = document.createElement("div");
+            heart.className = "floating-heart";
+            heart.innerHTML = '<i class="fas fa-heart"></i>';
+            heart.style.left = Math.random() * 100 + "%";
+            heart.style.animationDuration = Math.random() * 10 + 6 + "s";
+            heart.style.animationDelay = Math.random() * 6 + "s";
+            heart.style.fontSize = Math.random() * 1.5 + 0.8 + "rem";
+            container.appendChild(heart);
+        }
+    }
+    createParticlesAndHearts();
+</script>
+</body>
+  </html>
