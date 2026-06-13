@@ -22,7 +22,7 @@
       scroll-behavior: smooth;
     }
 
-    /* SPLASH / HALAMAN SAMBUTAN (MUKA AWAL) */
+    /* SPLASH / HALAMAN SAMBUTAN (MUKA AWAL) - DIPERKECIL & MINIMALIS */
     .splash-screen {
       position: fixed;
       top: 0;
@@ -40,84 +40,88 @@
       backdrop-filter: blur(2px);
     }
 
+    /* konten splash lebih kecil, lebih sempit, lebih minimal */
     .splash-content {
-      max-width: 700px;
-      padding: 2rem;
-      background: rgba(255, 248, 235, 0.9);
-      border-radius: 70px 40px 70px 40px;
+      max-width: 520px;
+      width: 85%;
+      padding: 1.6rem 2rem;
+      background: rgba(255, 248, 235, 0.92);
+      border-radius: 55px 32px 55px 32px;
       backdrop-filter: blur(8px);
-      box-shadow: 0 25px 45px rgba(0,0,0,0.3), 0 0 0 6px #ffdd99, 0 0 0 12px #c97e2c;
-      animation: floatGlow 2s infinite alternate;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.25), 0 0 0 4px #ffdd99, 0 0 0 10px #c97e2c;
+      animation: floatGlowMin 2s infinite alternate;
       transform: translateY(0);
     }
 
-    @keyframes floatGlow {
-      0% { transform: translateY(0px); box-shadow: 0 25px 45px rgba(0,0,0,0.2), 0 0 0 6px #ffdd99, 0 0 0 12px #c97e2c; }
-      100% { transform: translateY(-12px); box-shadow: 0 35px 55px rgba(0,0,0,0.3), 0 0 0 8px #ffe6b3, 0 0 0 16px #e68a2e; }
+    /* animasi lebih halus & tidak terlalu besar */
+    @keyframes floatGlowMin {
+      0% { transform: translateY(0px); box-shadow: 0 20px 35px rgba(0,0,0,0.2), 0 0 0 4px #ffdd99, 0 0 0 10px #c97e2c; }
+      100% { transform: translateY(-6px); box-shadow: 0 28px 40px rgba(0,0,0,0.25), 0 0 0 6px #ffe6b3, 0 0 0 13px #e68a2e; }
     }
 
+    /* ukuran teks dan spacing dikurangi agar tidak "zoom" */
     .splash-content h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
+      font-size: 2rem;
       background: linear-gradient(135deg, #9e3c0b, #f7b05e);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      margin-bottom: 1rem;
-      letter-spacing: 2px;
+      margin-bottom: 0.7rem;
+      letter-spacing: 1px;
     }
 
     .splash-content .greeting {
-      font-size: 2.2rem;
+      font-size: 1.6rem;
       font-weight: 700;
       color: #61300e;
-      margin: 0.5rem 0;
+      margin: 0.4rem 0;
     }
 
     .splash-content .mutiara {
       font-style: italic;
-      font-size: 1.2rem;
+      font-size: 0.95rem;
       background: #efe3c9;
       display: inline-block;
-      padding: 0.5rem 1.5rem;
-      border-radius: 40px;
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
       color: #7b3f00;
-      margin: 1.2rem 0;
-      box-shadow: inset 0 1px 4px #ffefcf, 0 6px 12px rgba(0,0,0,0.1);
+      margin: 0.9rem 0;
+      box-shadow: inset 0 1px 4px #ffefcf, 0 4px 8px rgba(0,0,0,0.05);
     }
 
     .splash-content .heart-icon {
-      font-size: 3rem;
+      font-size: 2.2rem;
       color: #e63946;
-      margin: 0.5rem;
+      margin: 0.3rem;
       animation: heartbeat 1.4s infinite;
     }
 
     @keyframes heartbeat {
       0% { transform: scale(1); }
-      50% { transform: scale(1.2); text-shadow: 0 0 5px #ffb3b3; }
+      50% { transform: scale(1.1); text-shadow: 0 0 3px #ffb3b3; }
       100% { transform: scale(1); }
     }
 
     .enter-btn {
       background: #b45f2b;
       border: none;
-      padding: 12px 32px;
-      font-size: 1.2rem;
+      padding: 8px 24px;
+      font-size: 1rem;
       font-weight: bold;
       color: #fff6e8;
-      border-radius: 50px;
+      border-radius: 40px;
       cursor: pointer;
-      margin-top: 20px;
+      margin-top: 12px;
       transition: 0.3s;
-      box-shadow: 0 8px 0 #5a2e12;
+      box-shadow: 0 6px 0 #5a2e12;
       font-family: 'Inter', sans-serif;
     }
 
     .enter-btn:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       background: #d47c3a;
-      box-shadow: 0 11px 0 #5a2e12;
+      box-shadow: 0 8px 0 #5a2e12;
     }
 
     /* konten utama (awal tersembunyi) */
@@ -224,10 +228,11 @@
     }
 
     @media (max-width: 700px) {
-      .splash-content h1 { font-size: 2rem; }
-      .greeting { font-size: 1.6rem; }
+      .splash-content h1 { font-size: 1.5rem; }
+      .splash-content .greeting { font-size: 1.2rem; }
       .hero h2 { font-size: 1.6rem; }
       th, td { font-size: 0.75rem; padding: 8px 4px; }
+      .splash-content { padding: 1.2rem 1.5rem; max-width: 90%; }
     }
   </style>
 </head>
@@ -270,7 +275,7 @@
 </div>
 
 <script>
-  // Data 50 alat musik modern sesuai permintaan
+  // Data 50 alat musik modern sesuai permintaan (tidak diubah sama sekali)
   const alatMusikList = [
     // Elektronik & Digital 1-10
     {nama:"Gamelan Elektrik", daerah:"Jawa Tengah, DIY", kategori:"Elektronik", sumber:"Elektrofon", cara:"Dipukul (midi trigger)"},
@@ -333,8 +338,7 @@
     {nama:"Modular Synth Rebab", daerah:"Jawa Barat", kategori:"Kontemporer", sumber:"Elektrofon", cara:"Patch modul synthesizer untuk rebab"}
   ];
 
-  // memastikan tepat 50 data
-  console.log("Jumlah data alat musik modern:", alatMusikList.length); // harus 50
+  console.log("Jumlah data alat musik modern:", alatMusikList.length); // 50
 
   function generateTable() {
     const tbody = document.getElementById('tableBody');
@@ -344,10 +348,7 @@
       row.insertCell(0).innerText = index+1;
       row.insertCell(1).innerHTML = `<strong>${item.nama}</strong>`;
       row.insertCell(2).innerText = item.daerah;
-      // kategori badge sesuai gaya (Elektronik, Gitar & Senar, Drum & Perkusi, Keyboard & Tiup, Kontemporer)
-      let badgeClass = "category-badge";
-      let kategoriDisplay = item.kategori;
-      row.insertCell(3).innerHTML = `<span class="${badgeClass}">${kategoriDisplay}</span>`;
+      row.insertCell(3).innerHTML = `<span class="category-badge">${item.kategori}</span>`;
       row.insertCell(4).innerHTML = `<span class="sumber-bunyi"><i class="fas fa-music"></i> ${item.sumber}</span>`;
       row.insertCell(5).innerHTML = `<i class="fas fa-hands"></i> ${item.cara}`;
     });
