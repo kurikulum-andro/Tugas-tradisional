@@ -59,7 +59,6 @@
       100% { transform: translateY(-6px); box-shadow: 0 28px 40px rgba(0,0,0,0.25), 0 0 0 6px #ffe6b3, 0 0 0 13px #e68a2e; }
     }
 
-    /* ukuran teks dan spacing dikurangi agar tidak "zoom" */
     .splash-content h1 {
       font-family: 'Playfair Display', serif;
       font-size: 2rem;
@@ -133,30 +132,65 @@
       padding: 1rem 2rem 4rem 2rem;
     }
 
-    /* header modern */
+    /* header modern - DIPERBAIKI FONT & KERAPIHAN JUDUL */
     .hero {
       text-align: center;
       margin: 2rem 0 2.5rem 0;
-      padding: 1.5rem;
+      padding: 1.8rem 1.5rem;
       background: #ffffffcc;
       backdrop-filter: blur(8px);
       border-radius: 80px;
       box-shadow: 0 12px 28px rgba(0,0,0,0.05);
     }
 
+    /* judul utama lebih elegan, rapi, tidak berantakan */
     .hero h2 {
-      font-size: 2.3rem;
       font-family: 'Playfair Display', serif;
-      color: #874e2c;
-      display: inline-block;
-      border-bottom: 3px dashed #f0b27a;
-      padding-bottom: 6px;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #6b3e1c;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: linear-gradient(120deg, #8b5a2b, #c2833b);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+      border-bottom: 3px solid #f0b27a;
+      padding-bottom: 12px;
+      margin-bottom: 10px;
+    }
+
+    .hero h2 i {
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      color: #b45f2b;
+      font-size: 2rem;
     }
 
     .hero p {
-      margin-top: 12px;
-      font-weight: 400;
+      margin-top: 16px;
+      font-weight: 450;
       color: #5c3e2b;
+      font-size: 1.05rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.4;
+    }
+
+    /* kategori legend tetap rapi */
+    .hero p:last-of-type {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
     }
 
     /* tabel modern */
@@ -185,6 +219,7 @@
       position: sticky;
       top: 0;
       backdrop-filter: blur(4px);
+      font-family: 'Inter', sans-serif;
     }
 
     td {
@@ -202,12 +237,17 @@
     .category-badge {
       display: inline-block;
       background: #e9c896;
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 40px;
       font-weight: bold;
       font-size: 0.8rem;
       color: #4d2f15;
     }
+
+    /* warna sedikit berbeda untuk tiap kategori (opsional estetika) */
+    .category-ritmis { background: #fbc4ab; }
+    .category-melodis { background: #bdd9bf; }
+    .category-harmonis { background: #b7d0e5; }
 
     .sumber-bunyi {
       font-weight: 500;
@@ -230,9 +270,11 @@
     @media (max-width: 700px) {
       .splash-content h1 { font-size: 1.5rem; }
       .splash-content .greeting { font-size: 1.2rem; }
-      .hero h2 { font-size: 1.6rem; }
+      .hero h2 { font-size: 1.7rem; gap: 5px; }
+      .hero h2 i { font-size: 1.4rem; }
       th, td { font-size: 0.75rem; padding: 8px 4px; }
       .splash-content { padding: 1.2rem 1.5rem; max-width: 90%; }
+      .hero { padding: 1.2rem; }
     }
   </style>
 </head>
@@ -255,17 +297,25 @@
 
 <div class="main-content" id="mainContent">
   <div class="hero">
-    <h2><i class="fas fa-drum"></i> 50 Alat Musik Modern Tradisional Indonesia <i class="fas fa-guitar"></i></h2>
+    <h2>
+      <i class="fas fa-drum"></i> 
+      50 Alat Musik Modern Tradisional Indonesia 
+      <i class="fas fa-guitar"></i>
+    </h2>
     <p>Fusi kearifan lokal & inovasi masa kini — Membanggakan dari Sabang sampai Merauke.</p>
-    <p style="font-size:0.85rem;"><span class="category-badge">⚡ Elektronik & Digital</span>    <span class="category-badge">🎸 Gitar & Senar Modern</span>    <span class="category-badge">🥁 Drum & Perkusi Modern</span>    <span class="category-badge">🎹 Keyboard & Tiup Modern</span>    <span class="category-badge">🎧 Band & Kontemporer</span></p>
+    <p style="font-size:0.85rem;">
+      <span class="category-badge category-ritmis">🥁 Ritmis</span>    
+      <span class="category-badge category-melodis">🎵 Melodis</span>    
+      <span class="category-badge category-harmonis">🎼 Harmonis</span>
+    </p>
   </div>
   <div class="music-table-wrapper">
     <table id="alatMusikTable">
       <thead>
-        <tr><th>No</th><th>Nama Alat Musik</th><th>Asal Daerah</th><th>Kategori</th><th>Sumber Bunyi</th><th>Cara Memainkan</th></tr>
+        <tr><th>No</th><th>Nama Alat Musik</th><th>Asal Daerah</th><th>Kategori (R/M/H)</th><th>Sumber Bunyi</th><th>Cara Memainkan</th></tr>
       </thead>
       <tbody id="tableBody">
-        <!-- Data akan diisi oleh javascript (50 alat musik modern) -->
+        <!-- Data akan diisi oleh javascript (50 alat musik modern dengan kategori R/M/H) -->
       </tbody>
     </table>
   </div>
@@ -275,70 +325,94 @@
 </div>
 
 <script>
-  // Data 50 alat musik modern sesuai permintaan (tidak diubah sama sekali)
+  // Data 50 alat musik modern dengan kategori RITMIS, MELODIS, HARMONIS yang sesuai karakter
+  // R = Ritmis (penekanan pada irama/ritme, biasanya alat pukul perkusi)
+  // M = Melodis (menghasilkan nada/melodi)
+  // H = Harmonis (bisa memainkan akord/paduan nada)
   const alatMusikList = [
     // Elektronik & Digital 1-10
-    {nama:"Gamelan Elektrik", daerah:"Jawa Tengah, DIY", kategori:"Elektronik", sumber:"Elektrofon", cara:"Dipukul (midi trigger)"},
-    {nama:"Angklung Digital", daerah:"Jawa Barat", kategori:"Elektronik", sumber:"Elektrofon", cara:"Digoyang + sensor piezo"},
-    {nama:"Kendang Elektrik", daerah:"Jawa Barat", kategori:"Elektronik", sumber:"Elektrofon", cara:"Dipukul (drum pad)"},
-    {nama:"Sasando Elektrik", daerah:"NTT", kategori:"Elektronik", sumber:"Elektrofon", cara:"Dipetik + pickup"},
-    {nama:"Sape Elektrik", daerah:"Kaltim/Kalut", kategori:"Elektronik", sumber:"Elektrofon", cara:"Dipetik dengan preamp"},
-    {nama:"Kolintang Elektrik", daerah:"Sulut", kategori:"Elektronik", sumber:"Elektrofon", cara:"Dipukul stik + pickup"},
-    {nama:"Talempong Go", daerah:"Sumbar", kategori:"Elektronik", sumber:"Elektrofon", cara:"Dipukul dengan effect processor"},
-    {nama:"Gendang Remix", daerah:"Aceh", kategori:"Elektronik", sumber:"Elektrofon", cara:"Dipukul + loop station"},
-    {nama:"Serune Elektrik", daerah:"Aceh", kategori:"Elektronik", sumber:"Aerofon Elektrik", cara:"Ditiup + midi controller"},
-    {nama:"Gong Elektrik", daerah:"Bali", kategori:"Elektronik", sumber:"Elektrofon", cara:"Dipukul + sampling modul"},
+    {nama:"Gamelan Elektrik", daerah:"Jawa Tengah, DIY", kategori:"H", sumber:"Elektrofon", cara:"Dipukul (midi trigger)"},
+    {nama:"Angklung Digital", daerah:"Jawa Barat", kategori:"M", sumber:"Elektrofon", cara:"Digoyang + sensor piezo"},
+    {nama:"Kendang Elektrik", daerah:"Jawa Barat", kategori:"R", sumber:"Elektrofon", cara:"Dipukul (drum pad)"},
+    {nama:"Sasando Elektrik", daerah:"NTT", kategori:"H", sumber:"Elektrofon", cara:"Dipetik + pickup"},
+    {nama:"Sape Elektrik", daerah:"Kaltim/Kalut", kategori:"M", sumber:"Elektrofon", cara:"Dipetik dengan preamp"},
+    {nama:"Kolintang Elektrik", daerah:"Sulut", kategori:"M", sumber:"Elektrofon", cara:"Dipukul stik + pickup"},
+    {nama:"Talempong Go", daerah:"Sumbar", kategori:"M", sumber:"Elektrofon", cara:"Dipukul dengan effect processor"},
+    {nama:"Gendang Remix", daerah:"Aceh", kategori:"R", sumber:"Elektrofon", cara:"Dipukul + loop station"},
+    {nama:"Serune Elektrik", daerah:"Aceh", kategori:"M", sumber:"Aerofon Elektrik", cara:"Ditiup + midi controller"},
+    {nama:"Gong Elektrik", daerah:"Bali", kategori:"R", sumber:"Elektrofon", cara:"Dipukul + sampling modul"},
     
-    // Gitar & Senar Modern 11-20
-    {nama:"Gitar Sape", daerah:"Kaltim/Kalut", kategori:"Gitar & Senar", sumber:"Kordofon", cara:"Dipetik (akustik-elektrik)"},
-    {nama:"Gitar Kecapi", daerah:"Jawa Barat", kategori:"Gitar & Senar", sumber:"Kordofon", cara:"Dipetik dengan teknik fingerstyle"},
-    {nama:"Gitar Sasando", daerah:"NTT", kategori:"Gitar & Senar", sumber:"Kordofon", cara:"Dipetik (hybrid gitar-sasando)"},
-    {nama:"Bass Kolintang", daerah:"Sulut", kategori:"Gitar & Senar", sumber:"Kordofon", cara:"Dipetik (bass elektrik)"},
-    {nama:"Ukulele Kelor", daerah:"NTB", kategori:"Gitar & Senar", sumber:"Kordofon", cara:"Dipetik kecil (ukulele)"},
-    {nama:"Gitar Gambus Modern", daerah:"Riau/Aceh", kategori:"Gitar & Senar", sumber:"Kordofon", cara:"Dipetik dengan nada melayu"},
-    {nama:"Biola Rebab Elektrik", daerah:"Jawa Barat", kategori:"Gitar & Senar", sumber:"Kordofon", cara:"Digesek (biola elektrik)"},
-    {nama:"Harp Sasando 48 senar", daerah:"NTT", kategori:"Gitar & Senar", sumber:"Kordofon", cara:"Dipetik dengan jari (harp)"},
-    {nama:"Gitar Tifa", daerah:"Papua/Maluku", kategori:"Gitar & Senar", sumber:"Kordofon", cara:"Dipetik + efek perkusi body"},
-    {nama:"Gitar Suling", daerah:"Jawa Tengah", kategori:"Gitar & Senar", sumber:"Kordofon", cara:"Dipetik sambil ditiup lubang tambahan"},
+    // Gitar & Senar Modern 11-20 (mayoritas melodis/harmonis)
+    {nama:"Gitar Sape", daerah:"Kaltim/Kalut", kategori:"H", sumber:"Kordofon", cara:"Dipetik (akustik-elektrik)"},
+    {nama:"Gitar Kecapi", daerah:"Jawa Barat", kategori:"M", sumber:"Kordofon", cara:"Dipetik dengan teknik fingerstyle"},
+    {nama:"Gitar Sasando", daerah:"NTT", kategori:"H", sumber:"Kordofon", cara:"Dipetik (hybrid gitar-sasando)"},
+    {nama:"Bass Kolintang", daerah:"Sulut", kategori:"R", sumber:"Kordofon", cara:"Dipetik (bass elektrik)"},
+    {nama:"Ukulele Kelor", daerah:"NTB", kategori:"H", sumber:"Kordofon", cara:"Dipetik kecil (ukulele)"},
+    {nama:"Gitar Gambus Modern", daerah:"Riau/Aceh", kategori:"M", sumber:"Kordofon", cara:"Dipetik dengan nada melayu"},
+    {nama:"Biola Rebab Elektrik", daerah:"Jawa Barat", kategori:"M", sumber:"Kordofon", cara:"Digesek (biola elektrik)"},
+    {nama:"Harp Sasando 48 senar", daerah:"NTT", kategori:"H", sumber:"Kordofon", cara:"Dipetik dengan jari (harp)"},
+    {nama:"Gitar Tifa", daerah:"Papua/Maluku", kategori:"R", sumber:"Kordofon", cara:"Dipetik + efek perkusi body"},
+    {nama:"Gitar Suling", daerah:"Jawa Tengah", kategori:"M", sumber:"Kordofon", cara:"Dipetik sambil ditiup lubang tambahan"},
     
-    // Drum & Perkusi Modern 21-30
-    {nama:"Drum Kendang", daerah:"Jawa Tengah, DIY", kategori:"Drum & Perkusi", sumber:"Membranofon Elektrik", cara:"Dipukul dengan stik/set drum"},
-    {nama:"Cajon Sape", daerah:"Kaltim", kategori:"Drum & Perkusi", sumber:"Membranofon", cara:"Ditepak + duduk di atasnya"},
-    {nama:"Drum Tifa", daerah:"Papua/Maluku", kategori:"Drum & Perkusi", sumber:"Membranofon", cara:"Dipukul dengan telapak tangan"},
-    {nama:"Perkusi Talempong", daerah:"Sumbar", kategori:"Drum & Perkusi", sumber:"Idiofon", cara:"Dipukul multitonal"},
-    {nama:"Drum Kolintang", daerah:"Sulut", kategori:"Drum & Perkusi", sumber:"Idiofon/Membran", cara:"Dipukul kombinasi drum+kolintang"},
-    {nama:"Gendang Dawai", daerah:"Jawa Barat", kategori:"Drum & Perkusi", sumber:"Membranofon", cara:"Dipukul dengan dawai senar"},
-    {nama:"Ketipung Elektrik", daerah:"Jatim", kategori:"Drum & Perkusi", sumber:"Membranofon Elektrik", cara:"Dipukul + effect trigger"},
-    {nama:"Bedug Elektrik", daerah:"Banten/Jabar", kategori:"Drum & Perkusi", sumber:"Membranofon Elektrik", cara:"Dipukul via MIDI pad"},
-    {nama:"Rampak Drum", daerah:"Banten", kategori:"Drum & Perkusi", sumber:"Membranofon", cara:"Dipukul bersama rombongan"},
-    {nama:"Dogdog Modern", daerah:"Banten", kategori:"Drum & Perkusi", sumber:"Idiofon", cara:"Dipukul tabung bambu augmented"},
+    // Drum & Perkusi Modern 21-30 (Ritmis semua)
+    {nama:"Drum Kendang", daerah:"Jawa Tengah, DIY", kategori:"R", sumber:"Membranofon Elektrik", cara:"Dipukul dengan stik/set drum"},
+    {nama:"Cajon Sape", daerah:"Kaltim", kategori:"R", sumber:"Membranofon", cara:"Ditepak + duduk di atasnya"},
+    {nama:"Drum Tifa", daerah:"Papua/Maluku", kategori:"R", sumber:"Membranofon", cara:"Dipukul dengan telapak tangan"},
+    {nama:"Perkusi Talempong", daerah:"Sumbar", kategori:"R", sumber:"Idiofon", cara:"Dipukul multitonal"},
+    {nama:"Drum Kolintang", daerah:"Sulut", kategori:"R", sumber:"Idiofon/Membran", cara:"Dipukul kombinasi drum+kolintang"},
+    {nama:"Gendang Dawai", daerah:"Jawa Barat", kategori:"R", sumber:"Membranofon", cara:"Dipukul dengan dawai senar"},
+    {nama:"Ketipung Elektrik", daerah:"Jatim", kategori:"R", sumber:"Membranofon Elektrik", cara:"Dipukul + effect trigger"},
+    {nama:"Bedug Elektrik", daerah:"Banten/Jabar", kategori:"R", sumber:"Membranofon Elektrik", cara:"Dipukul via MIDI pad"},
+    {nama:"Rampak Drum", daerah:"Banten", kategori:"R", sumber:"Membranofon", cara:"Dipukul bersama rombongan"},
+    {nama:"Dogdog Modern", daerah:"Banten", kategori:"R", sumber:"Idiofon", cara:"Dipukul tabung bambu augmented"},
     
-    // Keyboard & Tiup Modern 31-40
-    {nama:"Keyboard Suling", daerah:"Jawa Barat", kategori:"Keyboard & Tiup", sumber:"Aerofon Digital", cara:"Ditiup + tuts keyboard"},
-    {nama:"Synth Serunai", daerah:"Sumbar", kategori:"Keyboard & Tiup", sumber:"Elektrofon", cara:"Ditiup + synthesizer"},
-    {nama:"MIDI Saluang", daerah:"Sumbar", kategori:"Keyboard & Tiup", sumber:"Aerofon Digital", cara:"Ditiup dengan MIDI breath controller"},
-    {nama:"Saxophone Rebab", daerah:"Jawa Barat", kategori:"Keyboard & Tiup", sumber:"Aerofon/Kordofon", cara:"Digesek sekaligus ditiup"},
-    {nama:"Trumpet Trompong", daerah:"Bali", kategori:"Keyboard & Tiup", sumber:"Aerofon", cara:"Ditiup dengan tabuhan trompong"},
-    {nama:"Melodika Gamelan", daerah:"DIY", kategori:"Keyboard & Tiup", sumber:"Aerofon", cara:"Ditiup sambil dipencet (melodika)"},
-    {nama:"Keyboard Gamelan", daerah:"Jawa Tengah", kategori:"Keyboard & Tiup", sumber:"Elektrofon", cara:"Dipencet tuts suara gamelan"},
-    {nama:"EWI Serune", daerah:"Aceh", kategori:"Keyboard & Tiup", sumber:"Aerofon Digital", cara:"Ditiup (EWI wind controller)"},
-    {nama:"Terompet Reog Elektrik", daerah:"Jatim", kategori:"Keyboard & Tiup", sumber:"Aerofon Elektrik", cara:"Ditiup + efek distorsi"},
-    {nama:"Harmonika Karinding", daerah:"Jawa Barat", kategori:"Keyboard & Tiup", sumber:"Idiofon/Aerofon", cara:"Ditiup sambil digetarkan di mulut"},
+    // Keyboard & Tiup Modern 31-40 (melodis dan harmonis)
+    {nama:"Keyboard Suling", daerah:"Jawa Barat", kategori:"M", sumber:"Aerofon Digital", cara:"Ditiup + tuts keyboard"},
+    {nama:"Synth Serunai", daerah:"Sumbar", kategori:"M", sumber:"Elektrofon", cara:"Ditiup + synthesizer"},
+    {nama:"MIDI Saluang", daerah:"Sumbar", kategori:"M", sumber:"Aerofon Digital", cara:"Ditiup dengan MIDI breath controller"},
+    {nama:"Saxophone Rebab", daerah:"Jawa Barat", kategori:"M", sumber:"Aerofon/Kordofon", cara:"Digesek sekaligus ditiup"},
+    {nama:"Trumpet Trompong", daerah:"Bali", kategori:"M", sumber:"Aerofon", cara:"Ditiup dengan tabuhan trompong"},
+    {nama:"Melodika Gamelan", daerah:"DIY", kategori:"M", sumber:"Aerofon", cara:"Ditiup sambil dipencet (melodika)"},
+    {nama:"Keyboard Gamelan", daerah:"Jawa Tengah", kategori:"H", sumber:"Elektrofon", cara:"Dipencet tuts suara gamelan"},
+    {nama:"EWI Serune", daerah:"Aceh", kategori:"M", sumber:"Aerofon Digital", cara:"Ditiup (EWI wind controller)"},
+    {nama:"Terompet Reog Elektrik", daerah:"Jatim", kategori:"M", sumber:"Aerofon Elektrik", cara:"Ditiup + efek distorsi"},
+    {nama:"Harmonika Karinding", daerah:"Jawa Barat", kategori:"M", sumber:"Idiofon/Aerofon", cara:"Ditiup sambil digetarkan di mulut"},
     
     // Band & Kontemporer Lainnya 41-50
-    {nama:"Efek Gamelan", daerah:"Jawa Tengah", kategori:"Kontemporer", sumber:"Elektrofon", cara:"Modul efek pedal untuk gamelan"},
-    {nama:"Looper Kendang", daerah:"Jawa Barat", kategori:"Kontemporer", sumber:"Elektrofon", cara:"Looping kendang live"},
-    {nama:"Sampler Tifa", daerah:"Papua", kategori:"Kontemporer", sumber:"Elektrofon", cara:"Sampling bunyi tifa dari pad"},
-    {nama:"DJ Console Angklung", daerah:"Jawa Barat", kategori:"Kontemporer", sumber:"Elektrofon", cara:"DJ mengocok angklung MIDI"},
-    {nama:"MIDI Controller Suling", daerah:"Jawa Tengah", kategori:"Kontemporer", sumber:"Aerofon Digital", cara:"Ditiup mengendalikan synth"},
-    {nama:"Loop Station Kolintang", daerah:"Sulut", kategori:"Kontemporer", sumber:"Elektrofon", cara:"Loop multitrack kolintang"},
-    {nama:"Pedal Gitar Sasando", daerah:"NTT", kategori:"Kontemporer", sumber:"Elektrofon", cara:"Efek pedal untuk sasando elektrik"},
-    {nama:"Ampli Sape", daerah:"Kaltim", kategori:"Kontemporer", sumber:"Elektrofon", cara:"Penguat suara khusus sape"},
-    {nama:"Mixer Gendang", daerah:"Sumut", kategori:"Kontemporer", sumber:"Elektrofon", cara:"Pencampur suara multi gendang"},
-    {nama:"Modular Synth Rebab", daerah:"Jawa Barat", kategori:"Kontemporer", sumber:"Elektrofon", cara:"Patch modul synthesizer untuk rebab"}
+    {nama:"Efek Gamelan", daerah:"Jawa Tengah", kategori:"H", sumber:"Elektrofon", cara:"Modul efek pedal untuk gamelan"},
+    {nama:"Looper Kendang", daerah:"Jawa Barat", kategori:"R", sumber:"Elektrofon", cara:"Looping kendang live"},
+    {nama:"Sampler Tifa", daerah:"Papua", kategori:"R", sumber:"Elektrofon", cara:"Sampling bunyi tifa dari pad"},
+    {nama:"DJ Console Angklung", daerah:"Jawa Barat", kategori:"M", sumber:"Elektrofon", cara:"DJ mengocok angklung MIDI"},
+    {nama:"MIDI Controller Suling", daerah:"Jawa Tengah", kategori:"M", sumber:"Aerofon Digital", cara:"Ditiup mengendalikan synth"},
+    {nama:"Loop Station Kolintang", daerah:"Sulut", kategori:"M", sumber:"Elektrofon", cara:"Loop multitrack kolintang"},
+    {nama:"Pedal Gitar Sasando", daerah:"NTT", kategori:"H", sumber:"Elektrofon", cara:"Efek pedal untuk sasando elektrik"},
+    {nama:"Ampli Sape", daerah:"Kaltim", kategori:"M", sumber:"Elektrofon", cara:"Penguat suara khusus sape"},
+    {nama:"Mixer Gendang", daerah:"Sumut", kategori:"R", sumber:"Elektrofon", cara:"Pencampur suara multi gendang"},
+    {nama:"Modular Synth Rebab", daerah:"Jawa Barat", kategori:"H", sumber:"Elektrofon", cara:"Patch modul synthesizer untuk rebab"}
   ];
 
-  console.log("Jumlah data alat musik modern:", alatMusikList.length); // 50
+  // Memastikan 50 data
+  console.log("Jumlah data alat musik modern (R/M/H):", alatMusikList.length);
+
+  // fungsi untuk menampilkan badge kategori dengan warna sesuai (Ritmis, Melodis, Harmonis)
+  function getKategoriBadge(kategori) {
+    let displayKategori = "";
+    let kelasTambahan = "";
+    if (kategori === "R") {
+      displayKategori = "Ritmis";
+      kelasTambahan = "category-ritmis";
+    } else if (kategori === "M") {
+      displayKategori = "Melodis";
+      kelasTambahan = "category-melodis";
+    } else if (kategori === "H") {
+      displayKategori = "Harmonis";
+      kelasTambahan = "category-harmonis";
+    } else {
+      displayKategori = kategori;
+      kelasTambahan = "";
+    }
+    return `<span class="category-badge ${kelasTambahan}">${displayKategori}</span>`;
+  }
 
   function generateTable() {
     const tbody = document.getElementById('tableBody');
@@ -348,7 +422,8 @@
       row.insertCell(0).innerText = index+1;
       row.insertCell(1).innerHTML = `<strong>${item.nama}</strong>`;
       row.insertCell(2).innerText = item.daerah;
-      row.insertCell(3).innerHTML = `<span class="category-badge">${item.kategori}</span>`;
+      // kategori (R/M/H) ditampilkan sebagai teks Ritmis, Melodis, atau Harmonis
+      row.insertCell(3).innerHTML = getKategoriBadge(item.kategori);
       row.insertCell(4).innerHTML = `<span class="sumber-bunyi"><i class="fas fa-music"></i> ${item.sumber}</span>`;
       row.insertCell(5).innerHTML = `<i class="fas fa-hands"></i> ${item.cara}`;
     });
